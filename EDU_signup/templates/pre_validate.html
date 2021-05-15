@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+        
+    <div class="container">
+        <h1>تایید هویت</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <h3 dir="rtl">کد تایید به شماره 234 ارسال شد</h3>
+            <input class="initphoneinput" placeholder="کد تایید را وارد کنید" type="number" name="two_factor_code" id="">
+            <button type="submit">OK</button>
+        </form>
+    </div>
+</body>
+</html>
