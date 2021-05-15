@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'EDU_signup'
+    'EDU_signup',
+    'EDU_login',
 ]
 
 MIDDLEWARE = [

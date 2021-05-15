@@ -11,26 +11,15 @@
 <body>
         
     <div class="container">
-        <h1>تایید هوویت</h1>
+        <h1>ورود به صفحه دانش آموز</h1>
         <h1>{{request.user}}</h1>
         <form method="POST">
 
             {% csrf_token %}
 
-            {% for item in form %}
-
-                {{item}}
-                <br>
-
-                <div class="error_field">
-
-                    {% for error in item.errors %}
-                        {{error}}
-                    {% endfor %}
-
-                </div>
-
-            {% endfor %}
+            <input class="initphoneinput" type="text" name="username" id="" placeholder="کد ملی دانش آموز">
+            <br>
+            <input class="initphoneinput" type="text" name="phone" id="" placeholder="تلفن همراه">
 
             <br><br>
             <button type="submit">submit</button>

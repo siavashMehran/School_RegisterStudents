@@ -20,6 +20,7 @@ from django.urls.conf import include
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', include('EDU_signup.urls'))
+    path('', include('EDU_signup.urls')),
+    path('', include('EDU_login.urls')),
     
 ]

@@ -12,9 +12,10 @@
         
     <div class="container">
         <h1>تایید هویت</h1>
+        <h1>{{request.user}}</h1>
         <form method="POST">
             {% csrf_token %}
-            <h3 dir="rtl">کد تایید به شماره 234 ارسال شد</h3>
+            <h3 dir="rtl">کد تایید به شماره {{request.user.username}} ارسال شد</h3>
             <input class="initphoneinput" placeholder="کد تایید را وارد کنید" type="number" name="two_factor_code" id="">
             <button type="submit">OK</button>
         </form>
