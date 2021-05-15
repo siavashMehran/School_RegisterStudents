@@ -5,8 +5,6 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import (
     authenticate, 
     login as logIn,
-    logout, 
-    get_user_model,
 )
 
 def login_page(request):

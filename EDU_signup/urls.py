@@ -1,5 +1,5 @@
-from EDU_signup.views import home, pre_validate
 from django.urls import path
+from EDU_signup.views import home, pre_validate
 
 urlpatterns = [
     path('', home),

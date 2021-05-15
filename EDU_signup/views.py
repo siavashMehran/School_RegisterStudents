@@ -1,5 +1,4 @@
 from EDU_signup.models import MyBaseUser
-from django.contrib.auth.models import User
 from django.http.response import Http404
 from EDU_signup.forms import MyBaseUserModelForm
 from django.shortcuts import redirect, render
