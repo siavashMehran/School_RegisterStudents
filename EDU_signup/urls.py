@@ -1,7 +1,7 @@
 from django.urls import path
-from EDU_signup.views import home, pre_validate
+from EDU_signup.views import pre_validate, signup
 
 urlpatterns = [
-    path('', home),
-    path('signup', pre_validate, name='pre_validate')
+    path('signup', signup, name='signup_page'),
+    path('validate', pre_validate, name='pre_validate_page')
 ]

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Document</title>
+</head>
+<body dir="rtl">
+
+    <div class="wrapper">
+
+        <header>
+            <div class="welcome txt-center">
+                <h1>سامانه ثبت نام دبستان عترت 1</h1>
+                
+            </div>
+    
+            <div class="button-group">
+    
+                <a class="butt fs-1" href="{% url 'login_page'%}"><div class="section-button">ویرایش اطلاعات</div></a>
+                <a class="butt fs-1" href="{% url 'signup_page'%}"><div class="section-button">ثبت نام</div></a>
+                <a class="butt fs-1" href="#"><div class="section-button">راهنمای ثبت نام</div></a>
+                <a class="butt fs-1" href="#"><div class="section-button">پشتیبانی</div></a>
+    
+            </div>
+        </header>
+        <br><br><br>
+        <main>
+            <h2>خوش امدید</h2>
+            <ul class="help-list">
+                
+                <br>
+                <li class="help-item fs-2">
+                    موارد مورد نیاز برای ثبت نام
+                    <ol>
+
+                        <li>اطلاعات فردی دانش اموز</li>
+                        <li>اسکن شناسنامه دانش اموز و اولیاء (پدر و مادر)</li>
+                        <li>اسکن کلیه کارنامه های پیشین دانش اموز</li>
+                        <li>اسکن سند محل سکونت دانش اموز</li>
+                        <li> تلفن همراه دانش اموز</li>
+                    </ol>
+                </li>
+                <li class="help-item fs-2">در صورتی که قبلا اطلاعات دانش اموز را وارد کرده اید از طریق دکمه ویرایش میتوانید اطلاعات دانش اموز را ویرایش کنید</li>
+                <li class="help-item fs-2">قبل از شروع پروسه ثبت نام <a href="">راهنمای ثبت نام</a> را مطالعه کنید</li>
+                <li class="help-item fs-2">در صورت بروز مشکل یا موارد خاص با بخش پشتیبانی تماس بگیرید</li>
+                <li class="help-item fs-2">در طول پروسه ثبت نام از دکمه برگشت استفاده نکنید</li>
+                
+            </ul>
+            
+        </main>
+    </div>
+    
+</body>
+</html>

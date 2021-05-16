@@ -14,7 +14,7 @@ from django.contrib.auth import (
     get_user_model,
 )
 
-def home(request:HttpRequest):
+def signup(request:HttpRequest):
 
     pre_form = MyBaseUserModelForm(request.POST or None)
 
@@ -33,25 +33,23 @@ def home(request:HttpRequest):
             
             logIn(request, base_user)
         
-            return redirect('pre_validate')
+            return redirect('pre_validate_page')
 
         else: 
-            print('try again . . . <homeView - form not valid>')
+            print('try again . . . <signupView - form not valid>')
             print(pre_form)
-            print('try again . . . <homeView - form not valid>')
+            print('try again . . . <signupView - form not valid>')
             
             
     context = {
         'form' : pre_form
     }
-    return render(request, 'index.html', context)
+    return render(request, 'signup.html', context)
 
 
 def pre_validate(request:HttpRequest):
 
-    print()
-    print(request.COOKIES)
-    print()
+    
     if (request.method == 'POST') and ('two_factor_code' in request.POST):
         user_input = request.POST.get('two_factor_code')
         two_factor = MyBaseUser.objects.get(melli_code=request.user.get_username()).two_factor_code
@@ -60,12 +58,13 @@ def pre_validate(request:HttpRequest):
             client_base_user = MyBaseUser.objects.get(melli_code=request.user.get_username())
             client_base_user.is_good_to_go = True
             client_base_user.save()
+
             return redirect('/')
 
 
-    client_phone = MyBaseUser.objects.get(melli_code=request.user.username)
+    
     context = {
-        
+        'client_phone' : MyBaseUser.objects.get(melli_code=request.user.username).phone
     }
     
     return render(request, 'pre_validate.html', context)

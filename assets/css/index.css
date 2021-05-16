@@ -1,0 +1,122 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+
+}
+a{
+    text-decoration: none;
+}
+/* =====================one liner classes====================== */
+.txt-center{
+    text-align: center;
+}
+
+.fs-1{
+    font-size: 18px;
+}
+.fs-2{
+    font-size: 20px;
+}
+.fs-3{
+    font-size: 24px;
+}
+
+
+
+
+
+
+/* ============================================================= */
+
+
+
+body{
+    background-color: beige;
+    font-family: monospace;
+    background-image: url('2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-clip: content-box;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.wrapper{
+    width: 80%;
+    margin: 10% auto;
+    background-image: linear-gradient(220deg, rgba(255, 255, 255, 0.8), rgba(255, 225, 225, 0.7));
+
+
+}
+
+.welcome{
+    padding-top: 80px;
+    padding-bottom: 50px;
+}
+
+.button-group{
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.section-button{
+    border-radius: 10px;
+    padding: 20px 60px;
+    background-color: rgb(255, 255, 255);
+}
+.butt{
+    transition: .5s;
+}
+.butt:hover, .butt:focus{
+    filter: invert(1);
+}
+
+main{
+    width: 70%;
+    margin: 0 auto;
+}
+main{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.help-list{
+    padding-bottom: 50px;
+}
+.help-item{
+    padding-bottom: 50px;
+}
+.help-list ol li{
+    padding-top: 10px;
+}
+
+.btn-submit {
+    padding: 8px 35px;
+    background-color: transparent;
+    border: 2px solid #46fd46;
+    border-radius: 5px;
+    margin: 30px;
+    color: #46fd46;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.btn-submit:hover, .btn-submit:focus{
+    background-color: green;
+}
+
+
+
+
+@media(max-width:600px){
+    .butt {
+        transition: .5s;
+        width: 100%;
+        margin: 10px;
+        text-align: center;
+    }
+    
+}
