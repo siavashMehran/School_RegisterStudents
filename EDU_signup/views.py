@@ -36,19 +36,22 @@ def home(request:HttpRequest):
             return redirect('pre_validate')
 
         else: 
-            print(pre_form.errors)
+            print('try again . . . <homeView - form not valid>')
+            print(pre_form)
+            print('try again . . . <homeView - form not valid>')
             
-
+            
     context = {
         'form' : pre_form
     }
-
     return render(request, 'index.html', context)
 
 
 def pre_validate(request:HttpRequest):
 
-
+    print()
+    print(request.COOKIES)
+    print()
     if (request.method == 'POST') and ('two_factor_code' in request.POST):
         user_input = request.POST.get('two_factor_code')
         two_factor = MyBaseUser.objects.get(melli_code=request.user.get_username()).two_factor_code
@@ -59,8 +62,10 @@ def pre_validate(request:HttpRequest):
             client_base_user.save()
             return redirect('/')
 
+
+    client_phone = MyBaseUser.objects.get(melli_code=request.user.username)
     context = {
         
     }
-
+    
     return render(request, 'pre_validate.html', context)
