@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'EDU_signup',
     'EDU_login',
+    'EDU_user',
 ]
 
 MIDDLEWARE = [
