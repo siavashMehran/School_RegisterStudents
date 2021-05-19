@@ -55,6 +55,7 @@ body{
     background-clip: content-box;
     background-attachment: fixed;
     background-size: cover;
+    direction: rtl;
 }
 
 .wrapper{

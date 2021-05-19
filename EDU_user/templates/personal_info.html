@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="wrapper">
+
+        <header>
+
+            <div class="button-group">
+
+                <a class="butt fs-1" href="#"><div class="section-button">راهنمای ثبت نام</div></a>
+                <a class="butt fs-1" href="#"><div class="section-button">پشتیبانی</div></a>
+                <a class="butt fs-1" href=".."><div class="section-button">بازگشت </div></a>
+    
+            </div>
+
+            <div class="welcome txt-center">
+                <h1>اطلاعات فردی دانش آموز</h1>
+                
+            </div>
+
+        </header>
+
+        <br><br><br>
+
+        <main>
+
+            {% include 'components/progressbar.html' %}
+
+            <br><br><br>
+
+            <div class="intro">
+                
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {{form.stu_first_name}}
+                    {% for error in stu_first_name.errors %} {{stu_first_name}} {% endfor %}
+                    {{form.stu_last_name}}
+                    {% for error in stu_last_name.errors %} {{stu_last_name}} {% endfor %}
+                    {{form.stu_father_name}}
+                    {% for error in stu_father_name.errors %} {{stu_father_name}} {% endfor %}
+                    {{form.stu_birthday}}
+                    {% for error in stu_birthday.errors %} {{stu_birthday}} {% endfor %}
+                    {{form.stu_paye}}
+                    {% for error in stu_paye.errors %} {{stu_paye}} {% endfor %}
+                    {{form.stu_last_moadel}}
+                    {% for error in stu_last_moadel.errors %} {{stu_last_moadel}} {% endfor %}
+                    {{form.user}}
+                    {% for error in user.errors %} user {% endfor %}
+                    <br>
+                    <div class="txt-center">
+                        <button class="btn-submit fs-3" type="submit">ok</button>
+                    </div>
+                </form>
+                
+                
+            </div>
+
+        </main>
+        
+    </div>
+    
+</body>
+</html>
+
+
+

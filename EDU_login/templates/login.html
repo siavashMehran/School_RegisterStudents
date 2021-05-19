@@ -10,21 +10,41 @@
 </head>
 <body>
         
-    <div class="container">
-        <h1>ورود به صفحه دانش آموز</h1>
-        <h1>{{request.user}}</h1>
-        <form method="POST">
+    <div class="wrapper">
 
-            {% csrf_token %}
+        <header>
+            <div class="welcome txt-center">
+                <h1>سامانه ثبت نام دبستان عترت 1</h1>
+                
+            </div>
+    
+            <div class="button-group">
+    
+                <a class="butt fs-1" href="{% url 'login_page'%}"><div class="section-button">ویرایش اطلاعات</div></a>
+                <a class="butt fs-1" href="{% url 'signup_page'%}"><div class="section-button">ثبت نام</div></a>
+                <a class="butt fs-1" href="#"><div class="section-button">راهنمای ثبت نام</div></a>
+                <a class="butt fs-1" href="#"><div class="section-button">پشتیبانی</div></a>
+    
+            </div>
+        </header>
+        <br><br><br>
+        <main class="txt-center">
+            <h1>ورود به صفحه دانش آموز</h1>
+            <h1>{{request.user}}</h1>
+            <form method="POST">
 
-            <input class="initphoneinput" type="text" name="username" id="" placeholder="کد ملی دانش آموز">
-            <br>
-            <input class="initphoneinput" type="text" name="phone" id="" placeholder="تلفن همراه">
+                {% csrf_token %}
 
-            <br><br>
-            <button type="submit">submit</button>
+                <input class="initphoneinput" type="text" name="username" id="" placeholder="کد ملی دانش آموز">
+                <br>
+                <input class="initphoneinput" type="text" name="phone" id="" placeholder="تلفن همراه">
 
-        </form>
+                <br><br>
+                <button class="btn-submit fs-3" type="submit">ورود</button>
+
+            </form>
+            
+        </main>
     </div>
 </body>
 </html>

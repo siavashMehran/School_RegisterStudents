@@ -59,7 +59,7 @@ def pre_validate(request:HttpRequest):
             client_base_user.is_good_to_go = True
             client_base_user.save()
 
-            return redirect('/')
+            return redirect('personal_info_page')
 
 
     
