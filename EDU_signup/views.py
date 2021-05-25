@@ -15,25 +15,22 @@ from django.contrib.auth import (
 )
 
 def signup(request:HttpRequest):
-
-    pre_form = MyBaseUserModelForm(request.POST or None)
+    
+    pre_form = MyBaseUserModelForm()
 
     if request.method == 'POST':
+        pre_form = MyBaseUserModelForm(request.POST)
         
         if pre_form.is_valid():
-
+            
             # save melli_code, phone, two factor code to database
             pre_form.save()
-
-            # create a basic user from the form and log it in
-            user_model = get_user_model()
-            if not user_model.objects.filter(username=pre_form.cleaned_data.get('melli_code')):
-                try :  base_user = user_model.objects.create_user(username=str(pre_form.cleaned_data.get('melli_code')), password=str(pre_form.cleaned_data.get('phone')))
-                except IntegrityError: raise Http404('user alredy exists')
-            
-            logIn(request, base_user)
         
-            return redirect('pre_validate_page')
+            response = redirect('phone_number_validate_page')
+            response.set_cookie(key='melli_code', value=pre_form.cleaned_data.get('melli_code').strip(), max_age=1800)
+            response.set_cookie(key='phone', value=pre_form.cleaned_data.get('phone').strip(), max_age=1800)
+            
+            return  response
 
         else: 
             print('try again . . . <signupView - form not valid>')
@@ -47,24 +44,26 @@ def signup(request:HttpRequest):
     return render(request, 'signup.html', context)
 
 
-def pre_validate(request:HttpRequest):
+def phone_number_validate(request:HttpRequest):
 
     
     if (request.method == 'POST') and ('two_factor_code' in request.POST):
-        user_input = request.POST.get('two_factor_code')
-        two_factor = MyBaseUser.objects.get(melli_code=request.user.get_username()).two_factor_code
 
-        if str(user_input) == str(two_factor):
-            client_base_user = MyBaseUser.objects.get(melli_code=request.user.get_username())
-            client_base_user.is_good_to_go = True
-            client_base_user.save()
+        user_input = request.POST.get('two_factor_code')
+        user_base_object = MyBaseUser.objects.get(melli_code=request.COOKIES['melli_code'])
+        two_factor = user_base_object.two_factor_code
+
+        if str(user_input).strip() == str(two_factor).strip():
+        
+            user_base_object.is_good_to_go = True
+            user_base_object.save()
 
             return redirect('personal_info_page')
 
 
     
     context = {
-        'client_phone' : MyBaseUser.objects.get(melli_code=request.user.username).phone
+        # 'client_phone' : MyBaseUser.objects.get(melli_code=request.user.username).phone
     }
     
     return render(request, 'pre_validate.html', context)

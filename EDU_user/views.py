@@ -10,15 +10,14 @@ from django.shortcuts import redirect, render
 
 def personal_info(request:HttpRequest):
 
-    if User_Auth_State.objects.filter(user=request.user):
-        redirect('/')
 
     myUser = get_user_model().objects.filter(username=request.user.username).first()
-    personal_info_form = User_Auth_State_Model_Form(initial={'user':myUser})
+    personal_info_form = User_Auth_State_Model_Form()
     
 
     if request.method == 'POST' :
-        personal_info_form = User_Auth_State_Model_Form(request.POST)
+        personal_info_form = User_Auth_State_Model_Form(request.POST, initial={'user':myUser})
+        personal_info_form:User_Auth_State_Model_Form.fields.get('user') = request.user
         if personal_info_form.is_valid():
             personal_info_form.save()
         else:

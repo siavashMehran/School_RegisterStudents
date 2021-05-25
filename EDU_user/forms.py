@@ -16,6 +16,7 @@ class User_Auth_State_Model_Form(forms.ModelForm):
             'stu_father_name' : forms.TextInput(attrs={'placeholder' : 'نام پدر :', 'class' : 'initphoneinput'}),
             'stu_birthday'    : forms.TextInput(attrs={'placeholder' : 'تاریخ تولد ( مثال  1382-12-30 ):', 'class' : 'initphoneinput'}),
             'stu_last_moadel' : forms.TextInput(attrs={'placeholder' : 'آخرین معدل دانش آموز به صورت ( 19.34 ):', 'class' : 'initphoneinput'}),
-            'user'            : forms.HiddenInput({'required': 'false'}),
+            'user'            : forms.HiddenInput(),
             'stu_paye'        : forms.Select(attrs={'class' : 'initphoneinput'}),
         }
+        

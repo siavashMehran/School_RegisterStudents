@@ -1,10 +1,13 @@
-from django.http.response import Http404
+from django.http.request import HttpRequest
+from EDU_user.models import User_info_Deleter
+from django.http.response import Http404, HttpResponse
 from django.shortcuts import redirect, render
 
 # authenticate related import
 from django.contrib.auth import (
     authenticate, 
     login as logIn,
+    logout,
 )
 
 def login_page(request):
@@ -28,3 +31,13 @@ def login_page(request):
 
     context = {}
     return render(request, 'login.html', context)
+
+def log_out(request:HttpRequest):
+    
+    User_info_Deleter.delete_user_all_related_tables(request)
+    logout(request)
+    
+    response = redirect(request.META.get('HTTP_REFERER'))
+    for cookie in request.COOKIES:
+        response.delete_cookie(cookie)
+    return response

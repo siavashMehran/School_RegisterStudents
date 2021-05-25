@@ -14,13 +14,7 @@
 
         <header>
 
-            <div class="button-group">
-
-                <a class="butt fs-1" href="#"><div class="section-button">راهنمای ثبت نام</div></a>
-                <a class="butt fs-1" href="#"><div class="section-button">پشتیبانی</div></a>
-                <a class="butt fs-1" href=".."><div class="section-button">بازگشت </div></a>
-    
-            </div>
+            {% include 'components/registering_process_navbar.html' %}
 
             <div class="welcome txt-center">
                 <h1>اطلاعات فردی دانش آموز</h1>
@@ -53,7 +47,6 @@
                     {% for error in stu_paye.errors %} {{stu_paye}} {% endfor %}
                     {{form.stu_last_moadel}}
                     {% for error in stu_last_moadel.errors %} {{stu_last_moadel}} {% endfor %}
-                    {{form.user}}
                     {% for error in user.errors %} user {% endfor %}
                     <br>
                     <div class="txt-center">
