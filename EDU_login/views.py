@@ -35,6 +35,7 @@ def login_page(request):
 def log_out(request:HttpRequest):
     
     User_info_Deleter.delete_user_all_related_tables(request)
+    User_info_Deleter._delete_users_main_user(request)
     logout(request)
     
     response = redirect(request.META.get('HTTP_REFERER'))

@@ -1,9 +1,8 @@
 from EDU_signup.models import MyBaseUser
-from django.http.response import Http404
 from EDU_signup.forms import MyBaseUserModelForm
 from django.shortcuts import redirect, render
 from django.http import HttpRequest
-from django.db.utils import IntegrityError
+from django.contrib.auth.models import User
 
 # imports for making a base user
 
@@ -33,9 +32,7 @@ def signup(request:HttpRequest):
             return  response
 
         else: 
-            print('try again . . . <signupView - form not valid>')
-            print(pre_form)
-            print('try again . . . <signupView - form not valid>')
+            pass
             
             
     context = {
@@ -55,9 +52,10 @@ def phone_number_validate(request:HttpRequest):
 
         if str(user_input).strip() == str(two_factor).strip():
         
-            user_base_object.is_good_to_go = True
-            user_base_object.save()
-
+            user_base_object.delete()
+            user:User = get_user_model().objects.create_user(username=request.COOKIES['melli_code'], password=request.COOKIES['phone'])
+            
+            logIn(request, user)
             return redirect('personal_info_page')
 
 

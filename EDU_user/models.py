@@ -56,6 +56,7 @@ class User_info_Deleter:
             else : pass
         except : pass
 
+
     @classmethod
     def delete_user_all_related_tables(cls, request):
         cls._delete_users_MyBaseUser(request)
