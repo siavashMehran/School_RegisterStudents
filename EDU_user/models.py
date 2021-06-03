@@ -1,3 +1,4 @@
+from django.http.request import HttpRequest
 from EDU_signup.models import MyBaseUser
 from django.contrib.auth import get_user_model
 from django.db import models
@@ -39,9 +40,9 @@ class User_info_Deleter:
         except : pass
 
     
-    def _delete_users_MyBaseUser(request):
+    def _delete_users_MyBaseUser(request:HttpRequest):
         try:
-            client_MyBaseUser = MyBaseUser.objects.filter(melli_code=request.user.username.strip()).first()
+            client_MyBaseUser = MyBaseUser.objects.filter(melli_code=request.COOKIES.get('melli_code')).first()
             if client_MyBaseUser :
                 return client_MyBaseUser.delete()
             else : pass

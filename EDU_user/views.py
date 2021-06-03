@@ -21,7 +21,7 @@ def personal_info(request:HttpRequest):
         if personal_info_form.is_valid():
             personal_info_form.save()
         else:
-            personal_info_form:User_Auth_State_Model_Form.add_error(error='asd')
+            personal_info_form:User_Auth_State_Model_Form.add_error(error='اطلاعات نادرست')
 
 
     context = {
