@@ -1,4 +1,4 @@
-from EDU_user.models import User_Auth_State
+from EDU_user.models import User_Auth_State, User_Upload_Files
 from django import forms
 
 
@@ -16,7 +16,25 @@ class User_Auth_State_Model_Form(forms.ModelForm):
             'stu_father_name' : forms.TextInput(attrs={'placeholder' : 'نام پدر :', 'class' : 'initphoneinput'}),
             'stu_birthday'    : forms.TextInput(attrs={'placeholder' : 'تاریخ تولد ( مثال  1382-12-30 ):', 'class' : 'initphoneinput'}),
             'stu_last_moadel' : forms.TextInput(attrs={'placeholder' : 'آخرین معدل دانش آموز به صورت ( 19.34 ):', 'class' : 'initphoneinput'}),
-            'user'            : forms.HiddenInput(),
             'stu_paye'        : forms.Select(attrs={'class' : 'initphoneinput'}),
+            
         }
+        
+
+class User_Upload_Files_Model_Form(forms.ModelForm):
+    
+    class Meta:
+        
+        model   = User_Upload_Files
+        fields = '__all__'
+        exclude = ['user']
+
+        widgets = {
+            'scan_student'  : forms.FileInput(attrs={'class' : 'file_input', 'placeholder':'asd'}),
+            
+            
+        }
+        
+
+        
         

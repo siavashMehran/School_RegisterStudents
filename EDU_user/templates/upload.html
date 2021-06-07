@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="wrapper">
+
+        <header>
+
+            {% include 'components/registering_process_navbar.html' %}
+
+            <div class="welcome txt-center">
+                <h1>اطلاعات فردی دانش آموز</h1>
+                
+            </div>
+
+        </header>
+
+        <br><br><br>
+
+        <main>
+
+            {% include 'components/progressbar.html' %}
+
+            <br><br><br>
+
+            <div class="intro">
+                
+                <form method="POST" action="">
+                    {% csrf_token %}
+
+                    {% for input in form %}
+                        <h4>{{input.label}} :</h4> <br>
+                            {{input}}
+                        <br><br><br>
+                        <div class=""> </div>
+                    {% endfor %}
+                    <br>
+                    <div class="txt-center">
+                        <button class="btn-submit fs-3" type="submit">ok</button>
+                    </div>
+                </form>
+                
+                
+            </div>
+
+        </main>
+        
+    </div>
+    
+</body>
+</html>
+
+
+

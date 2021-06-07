@@ -1,7 +1,29 @@
+from django.forms.models import ModelFormOptions
 from django.http.request import HttpRequest
 from EDU_signup.models import MyBaseUser
 from django.contrib.auth import get_user_model
 from django.db import models
+import os
+
+
+
+def media_upload_path(instance, filepath):
+
+    def get_name_ext(filepath):
+        fullName      = os.path.basename(filepath)
+        filename, ext = os.path.splitext(fullName)
+        return filename, ext
+    
+    filename, ext = get_name_ext(filepath)
+
+    return f"user/scaned_content/{instance.user}/{filename}{ext}"
+
+
+
+
+
+
+
 
 # Create your models here.
 
@@ -25,11 +47,23 @@ class User_Auth_State(models.Model):
         return f"{self.stu_first_name} {self.stu_last_name} / {self.stu_paye} / {self.user.username}"
 
 
+
+class User_Upload_Files(models.Model):
+
+    user          = models.OneToOneField(to=get_user_model(), on_delete=models.CASCADE)
+    scan_student  = models.FileField('اسکن شناسنامه مادر', upload_to=media_upload_path, blank=False)
+    scan_mom      = models.FileField('اسکن شناسنامه مادر', upload_to=media_upload_path, blank=False)
+    scan_dad      = models.FileField('اسکن شناسنامه پدر', upload_to=media_upload_path, blank=False)
+    scan_lease    = models.FileField('اسکن سند یا قولنامه محل زندگی', upload_to=media_upload_path, blank=False)
+    scan_karname  = models.FileField('اسکن کارنامه آخر', upload_to=media_upload_path, blank=False)
+
+    def __str__(self):
+        return f"{self.user} uploads"
+
+
+
 class User_info_Deleter:
 
-   
-
-    
     def _delete_users_USER_AUTH_STATE(request):
         try:
             client_auth_table = User_Auth_State.objects.filter(user=request.user)
@@ -38,7 +72,6 @@ class User_info_Deleter:
                 return client_auth_table.first().delete()
                 
         except : pass
-
     
     def _delete_users_MyBaseUser(request:HttpRequest):
         try:
@@ -55,7 +88,6 @@ class User_info_Deleter:
                 return client_main_user_table.delete()
             else : pass
         except : pass
-
 
     @classmethod
     def delete_user_all_related_tables(cls, request):
