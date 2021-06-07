@@ -30,7 +30,7 @@ class User_Upload_Files_Model_Form(forms.ModelForm):
         exclude = ['user']
 
         widgets = {
-            'scan_student'  : forms.FileInput(attrs={'class' : 'file_input', 'placeholder':'asd'}),
+            'scan_student'  : forms.FileInput(attrs={'class' : 'file_input'}),
             
             
         }

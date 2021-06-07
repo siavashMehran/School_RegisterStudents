@@ -37,10 +37,12 @@
                     {% csrf_token %}
 
                     {% for input in form %}
-                        <h4>{{input.label}} :</h4> <br>
-                            {{input}}
-                        <br><br><br>
-                        <div class=""> </div>
+                        <div class="single_upload">
+                            <h4>{{input.label}} :</h4> <br>
+                                {{input}}
+                            <br><br><br>
+                            <div class="upload-prev-img"></div>
+                        </div>
                     {% endfor %}
                     <br>
                     <div class="txt-center">
@@ -55,6 +57,17 @@
         
     </div>
     
+    <script>
+        let inputs = document.querySelectorAll('.file_input')
+        
+        inputs.forEach((e, k, p)=>{
+            e.addEventListener('change', (e)=>{
+                c = e.target.parentNode.children[6]
+                img_url = URL.createObjectURL(e.srcElement.files[0])
+                c.innerHTML = `<img src=${img_url} width="200px">`
+            })
+        })
+    </script>
 </body>
 </html>
 
