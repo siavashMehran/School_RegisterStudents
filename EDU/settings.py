@@ -132,6 +132,6 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn', 'static_root')
 
 
-MEDIA_URL = '/var/user/www/'
+MEDIA_URL = '/user/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static_cdn', 'media_root')
 
