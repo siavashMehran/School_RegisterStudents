@@ -51,11 +51,11 @@ class User_Auth_State(models.Model):
 class User_Upload_Files(models.Model):
 
     user          = models.OneToOneField(to=get_user_model(), on_delete=models.CASCADE)
-    scan_student  = models.FileField('اسکن شناسنامه مادر', upload_to=media_upload_path, blank=False)
-    scan_mom      = models.FileField('اسکن شناسنامه مادر', upload_to=media_upload_path, blank=False)
-    scan_dad      = models.FileField('اسکن شناسنامه پدر', upload_to=media_upload_path, blank=False)
-    scan_lease    = models.FileField('اسکن سند یا قولنامه محل زندگی', upload_to=media_upload_path, blank=False)
-    scan_karname  = models.FileField('اسکن کارنامه آخر', upload_to=media_upload_path, blank=False)
+    scan_student  = models.ImageField('اسکن شناسنامه دانش آموز', upload_to=media_upload_path, blank=False)
+    scan_mom      = models.ImageField('اسکن شناسنامه مادر', upload_to=media_upload_path, blank=False)
+    scan_dad      = models.ImageField('اسکن شناسنامه پدر', upload_to=media_upload_path, blank=False)
+    scan_lease    = models.ImageField('اسکن سند یا قولنامه محل زندگی', upload_to=media_upload_path, blank=False)
+    scan_karname  = models.ImageField('اسکن کارنامه آخر', upload_to=media_upload_path, blank=False)
 
     def __str__(self):
         return f"{self.user} uploads"

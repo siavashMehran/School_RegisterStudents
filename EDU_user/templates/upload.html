@@ -33,17 +33,64 @@
 
             <div class="intro">
                 
-                <form method="POST" action="">
+                <form method="POST" enctype="multipart/form-data" >
                     {% csrf_token %}
-
-                    {% for input in form %}
+                        {% comment %} "#TODO : put tips here" {% endcomment %}
+                    
                         <div class="single_upload">
-                            <h4>{{input.label}} :</h4> <br>
-                                {{input}}
-                            <br><br><br>
+                            <div class="upload-box">
+                                <h4>{{form.scan_student.label}} :</h4> <br>
+                                {{form.scan_student}}
+                                <br><br><br>
+                            </div>
                             <div class="upload-prev-img"></div>
                         </div>
-                    {% endfor %}
+                    
+                        
+                    
+                        <div class="single_upload">
+                            <div class="upload-box">
+                                <h4>{{form.scan_mom.label}} :</h4> <br>
+                                {{form.scan_mom}}
+                                <br><br><br>
+                            </div>
+                            <div class="upload-prev-img"></div>
+                        </div>
+                    
+                    
+                        <div class="single_upload">
+                            <div class="upload-box">
+                                <h4>{{form.scan_dad.label}} :</h4> <br>
+                                {{form.scan_dad}}
+                                <br><br><br>
+                            </div>
+                            <div class="upload-prev-img"></div>
+                        </div>
+                    
+                    
+                        <div class="single_upload">
+                            <div class="upload-box">
+                                <h4>{{form.scan_lease.label}} :</h4> <br>
+                                {{form.scan_lease}}
+                                <br><br><br>
+                            </div>
+                            <div class="upload-prev-img"></div>
+                        </div>
+                    
+                    
+                        <div class="single_upload">
+                            <div class="upload-box">
+                                <h4>{{form.scan_karname.label}} :</h4> <br>
+                                {{form.scan_karname}}
+                                <br><br><br>
+                            </div>
+                            <div class="upload-prev-img"></div>
+                        </div>
+                        
+                        {% for item in form.errors %} {% for error in item.errors %} <p class="txt-red">{{error}}</p> {% endfor %} {% endfor %}
+                    
+                    
+
                     <br>
                     <div class="txt-center">
                         <button class="btn-submit fs-3" type="submit">ok</button>
@@ -62,7 +109,8 @@
         
         inputs.forEach((e, k, p)=>{
             e.addEventListener('change', (e)=>{
-                c = e.target.parentNode.children[6]
+                c = e.srcElement.parentElement.parentElement.children[1]
+                console.log(c)
                 img_url = URL.createObjectURL(e.srcElement.files[0])
                 c.innerHTML = `<img src=${img_url} width="200px">`
             })

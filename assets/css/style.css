@@ -26,7 +26,9 @@ a{
 .txt-center{
     text-align: center;
 }
-
+.txt-red{
+    color: red;
+}
 .fs-1{
     font-size: 18px;
 }
@@ -143,7 +145,11 @@ main{
 }
 
 
-
+.single_upload{
+    display: flex;
+    height: 300px;
+    justify-content: space-between;
+}
 
 
 

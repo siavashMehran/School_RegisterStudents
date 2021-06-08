@@ -27,12 +27,14 @@ class User_Upload_Files_Model_Form(forms.ModelForm):
         
         model   = User_Upload_Files
         fields = '__all__'
-        exclude = ['user']
 
         widgets = {
-            'scan_student'  : forms.FileInput(attrs={'class' : 'file_input'}),
-            
-            
+            'scan_student' : forms.FileInput(attrs={'class' : 'file_input'}),
+            'scan_mom'     : forms.FileInput(attrs={'class' : 'file_input'}),
+            'scan_dad'     : forms.FileInput(attrs={'class' : 'file_input'}),
+            'scan_lease'   : forms.FileInput(attrs={'class' : 'file_input'}),
+            'scan_karname' : forms.FileInput(attrs={'class' : 'file_input'}),
+            'user'         : forms.HiddenInput()
         }
         
 

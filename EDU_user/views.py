@@ -1,9 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.http.request import HttpRequest
-from EDU_user.models import User_Auth_State
+from EDU_user.models import User_Auth_State, User_Upload_Files
 from EDU_user.forms import User_Auth_State_Model_Form, User_Upload_Files_Model_Form
 from django.shortcuts import redirect, render
-from django.http.response import HttpResponse
+from django.http.response import Http404, HttpResponse
 # Create your views here.
 
 
@@ -35,10 +35,17 @@ def personal_info(request:HttpRequest):
     return render(request, 'personal_info.html', context)
 
 
-def upload_page(request):
+def upload_page(request:HttpRequest):
 
     form = User_Upload_Files_Model_Form(initial={'user':request.user})
     
+    if request.method == 'POST':
+        form = User_Upload_Files_Model_Form(request.POST, initial={'user':request.user}, files=request.FILES)
+        print(form.data)
+        
+        if form.is_valid() : form.save()
+        else : form.add_error('scan_karname', 'لطفا از اول تلاش کنید')
+
     context = {
         'form' : form
     }
