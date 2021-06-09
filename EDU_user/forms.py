@@ -34,7 +34,6 @@ class User_Upload_Files_Model_Form(forms.ModelForm):
             'scan_dad'     : forms.FileInput(attrs={'class' : 'file_input'}),
             'scan_lease'   : forms.FileInput(attrs={'class' : 'file_input'}),
             'scan_karname' : forms.FileInput(attrs={'class' : 'file_input'}),
-            'user'         : forms.HiddenInput()
         }
         
 

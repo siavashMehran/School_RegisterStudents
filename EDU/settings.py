@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'EDU_login',
     'EDU_user',
     'EDU_home',
+    'EDU_validate',
 ]
 
 MIDDLEWARE = [

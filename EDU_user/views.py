@@ -36,15 +36,23 @@ def personal_info(request:HttpRequest):
 
 
 def upload_page(request:HttpRequest):
-
-    form = User_Upload_Files_Model_Form(initial={'user':request.user})
-    
+    myUser = get_user_model().objects.filter(username=request.user.username).first()
+    form = User_Upload_Files_Model_Form(initial={'user':myUser})
+    print(form.initial)
     if request.method == 'POST':
-        form = User_Upload_Files_Model_Form(request.POST, initial={'user':request.user}, files=request.FILES)
+        form = User_Upload_Files_Model_Form(data=request.POST, files=request.FILES, initial={'user':myUser})
+        print()
+        print(form.initial)
+        print()
         print(form.data)
+        print()
+        print(form.files)
+        print(request.FILES)
+        print()
+        print()
         
-        if form.is_valid() : form.save()
-        else : form.add_error('scan_karname', 'لطفا از اول تلاش کنید')
+        if form.is_valid() : form.save() ; return redirect('verify_page')
+        else : form.add_error('scan_karname', 'لطفا از اول تلاش کنید') ; print();print('%'*200);print();return redirect()
 
     context = {
         'form' : form

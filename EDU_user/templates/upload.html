@@ -35,7 +35,7 @@
                 
                 <form method="POST" enctype="multipart/form-data" >
                     {% csrf_token %}
-                        {% comment %} "#TODO : put tips here" {% endcomment %}
+                        
                     
                         <div class="single_upload">
                             <div class="upload-box">
@@ -87,6 +87,8 @@
                             <div class="upload-prev-img"></div>
                         </div>
                         
+                        
+
                         {% for item in form.errors %} {% for error in item.errors %} <p class="txt-red">{{error}}</p> {% endfor %} {% endfor %}
                     
                     

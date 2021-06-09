@@ -38,7 +38,7 @@ def log_out(request:HttpRequest):
     User_info_Deleter._delete_users_main_user(request)
     logout(request)
     
-    response = redirect(request.META.get('HTTP_REFERER'))
+    response = redirect('/')
     for cookie in request.COOKIES:
         response.delete_cookie(cookie)
     return response
