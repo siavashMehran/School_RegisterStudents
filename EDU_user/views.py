@@ -41,18 +41,9 @@ def upload_page(request:HttpRequest):
     print(form.initial)
     if request.method == 'POST':
         form = User_Upload_Files_Model_Form(data=request.POST, files=request.FILES, initial={'user':myUser})
-        print()
-        print(form.initial)
-        print()
-        print(form.data)
-        print()
-        print(form.files)
-        print(request.FILES)
-        print()
-        print()
         
         if form.is_valid() : form.save() ; return redirect('verify_page')
-        else : form.add_error('scan_karname', 'لطفا از اول تلاش کنید') ; print();print('%'*200);print();return redirect()
+        else : form.add_error('scan_karname', 'لطفا از اول تلاش کنید') ;return redirect('verify_page')
 
     context = {
         'form' : form

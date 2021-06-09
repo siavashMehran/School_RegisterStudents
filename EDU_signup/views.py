@@ -14,7 +14,9 @@ from django.contrib.auth import (
 )
 
 def signup(request:HttpRequest):
-    
+    if request.user.is_authenticated:
+        return redirect('login_page')
+
     pre_form = MyBaseUserModelForm()
 
     if request.method == 'POST':
@@ -42,7 +44,8 @@ def signup(request:HttpRequest):
 
 
 def phone_number_validate(request:HttpRequest):
-
+    if request.user.is_authenticated:
+        return redirect('/')
     
     if (request.method == 'POST') and ('two_factor_code' in request.POST):
 

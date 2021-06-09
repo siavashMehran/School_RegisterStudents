@@ -13,7 +13,7 @@ from django.contrib.auth import (
 def login_page(request):
     # redirect if user is alredy logged in
     if request.user.is_authenticated:
-        return redirect('/admin')
+        return redirect('verify_page')
 
     # login logic for base users
     if (request.method == 'POST') and ('username' in request.POST) and ('phone' in request.POST):

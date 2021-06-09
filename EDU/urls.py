@@ -26,7 +26,7 @@ urlpatterns = [
     path('', include('EDU_signup.urls')),
     path('', include('EDU_login.urls')),
     path('', include('EDU_user.urls')),
-    path('', include('EDU_validate.urls')),
+    path('', include('EDU_verify.urls')),
     
 ]
 
