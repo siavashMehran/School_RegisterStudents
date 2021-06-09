@@ -89,7 +89,17 @@ class User_info_Deleter:
             else : pass
         except : pass
 
+    def _delete_users_uploads(request):
+        try:
+            user_uploads = User_Upload_Files.objects.get(user=request.user)
+            if user_uploads:
+                return user_uploads.delete()
+            else: pass
+        except : pass
+
+
     @classmethod
     def delete_user_all_related_tables(cls, request):
         cls._delete_users_MyBaseUser(request)
         cls._delete_users_USER_AUTH_STATE(request)
+        cls._delete_users_uploads(request)
