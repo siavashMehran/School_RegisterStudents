@@ -23,8 +23,8 @@ class MyBaseUserModelForm(forms.ModelForm):
 
         # this is commented due to testing issues it might bring on
         # and should be used in production
-        # if not (verify_melli_code(melli_code)):
-        #     raise forms.ValidationError('کد ملی وارد شده اشتباه است')
+        if not (verify_melli_code(melli_code)):
+            raise forms.ValidationError('کد ملی وارد شده اشتباه است')
 
         return str(melli_code)
 

@@ -15,18 +15,15 @@ def personal_info(request:HttpRequest):
     personal_info_form = User_Auth_State_Model_Form(initial={'user':myUser})
 
     if request.method == 'POST' :
+        pre_model:User_Auth_State = User_Auth_State(user=myUser)
+        personal_info_form = User_Auth_State_Model_Form(request.POST, initial={'user':myUser}, instance=pre_model)
 
-        personal_info_form = User_Auth_State_Model_Form(request.POST, initial={'user':myUser})
         if personal_info_form.is_valid():
-            personal_info_form.save()
+            pre_model.save()
             return redirect('upload_page')
 
-        else:
-            personal_info_form:User_Auth_State_Model_Form.add_error(error='اطلاعات نادرست')
-            print('$'*100)
-            print(personal_info_form.cleaned_data.get('user'))
-            print(personal_info_form.initial)
-            print('$'*100)
+        else: 
+            pass
 
 
     context = {

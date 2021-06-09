@@ -26,7 +26,9 @@ a{
 .txt-center{
     text-align: center;
 }
-
+.txt-red{
+    color: red;
+}
 .fs-1{
     font-size: 18px;
 }
@@ -37,9 +39,13 @@ a{
     font-size: 24px;
 }
 
+.ltr{
+    direction: ltr;
+}
 
-
-
+.rtl{
+    direction: rtl;
+}
 
 
 /* ============================================================= */
@@ -49,12 +55,13 @@ a{
 body{
     background-color: beige;
     font-family: monospace;
-    background-image: url('2.jpg');
+    /* background-image: url('2.jpg'); */
     background-position: center;
     background-repeat: no-repeat;
     background-clip: content-box;
     background-attachment: fixed;
     background-size: cover;
+    direction: rtl;
 }
 
 .wrapper{
@@ -142,7 +149,11 @@ main{
 }
 
 
-
+.single_upload{
+    display: flex;
+    height: 300px;
+    justify-content: space-between;
+}
 
 
 

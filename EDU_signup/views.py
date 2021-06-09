@@ -22,6 +22,14 @@ def signup(request:HttpRequest):
     if request.method == 'POST':
         pre_form = MyBaseUserModelForm(request.POST)
         
+        try:
+            user_exists = get_user_model().objects.filter(username=request.POST['melli_code']).exists()
+            if user_exists:
+                return redirect('login_page')
+        except:
+            pass
+
+
         if pre_form.is_valid():
             
             # save melli_code, phone, two factor code to database
