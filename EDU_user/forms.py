@@ -8,7 +8,7 @@ class User_Auth_State_Model_Form(forms.ModelForm):
     class Meta:
     
         model   = User_Auth_State
-        fields  = ['stu_first_name', 'stu_last_name', 'stu_father_name', 'stu_birthday', 'stu_paye', 'stu_last_moadel']
+        fields  = ['stu_first_name', 'stu_last_name', 'stu_father_name', 'stu_birthday', 'stu_paye', 'stu_last_moadel', 'user']
         exclude = ['user']
         widgets = {
             'stu_first_name'  : forms.TextInput(attrs={'placeholder' : 'نام دانش آموز :', 'class' : 'initphoneinput'}),
@@ -26,7 +26,7 @@ class User_Upload_Files_Model_Form(forms.ModelForm):
         
         model   = User_Upload_Files
         fields = '__all__'
-
+        exclude = ['user']
         widgets = {
             'scan_student' : forms.FileInput(attrs={'class' : 'file_input'}),
             'scan_mom'     : forms.FileInput(attrs={'class' : 'file_input'}),
@@ -34,6 +34,7 @@ class User_Upload_Files_Model_Form(forms.ModelForm):
             'scan_lease'   : forms.FileInput(attrs={'class' : 'file_input'}),
             'scan_karname' : forms.FileInput(attrs={'class' : 'file_input'}),
         }
+    
         
 
         

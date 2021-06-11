@@ -129,6 +129,21 @@ main{
     background-color: green;
 }
 
+.btn-delete {
+    padding: 8px 35px;
+    background-color: transparent;
+    border: 2px solid #dd5635;
+    border-radius: 5px;
+    margin: 30px;
+    color: #000000;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.btn-delete:hover, .btn-delete:focus{
+    background-color: #ff3300;
+}
+
 .prog-div {
     background-color: rgba(255, 255, 255, 0);
     display: flex;
@@ -155,7 +170,19 @@ main{
     justify-content: space-between;
 }
 
+.scan-validate {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
+.scan-single{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.scan-single h4{
+    padding-bottom: 20px;
+}
 
 @media(max-width:600px){
     .wrapper{

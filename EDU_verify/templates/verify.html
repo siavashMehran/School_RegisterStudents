@@ -32,9 +32,80 @@
             <br><br><br>
 
             <div class="intro">
-                
+          
+                <div class="scan-validate">
+
+                    <div class="scan-single">
+                        <h4> شناسنامه دانش آموز</h4>
+                        <img src="{{scans.scan_student.url}}" width="300px">
+                    </div>
+
+                    <div class="scan-single">
+                        <h4> شناسنامه مادر دانش آموز</h4>
+                        <img src="{{scans.scan_mom.url}}" width="300px">
+                    </div>
+
+                    <div class="scan-single">
+                        <h4> شناسنامه پدر دانش آموز</h4>
+                        <img src="{{scans.scan_dad.url}}" width="300px">
+                    </div>
+
+                    <div class="scan-single">
+                        <h4>سند یا قولنامه محل زندگی</h4>
+                        <img src="{{scans.scan_lease.url}}" width="300px">
+                    </div>
+                    
+                    <div class="scan-single">
+                        <h4>آخرین کارنامه دانش آموز</h4>
+                        <img src="{{scans.scan_karname.url}}" width="300px">
+                    </div>
+
+                    
+                </div>
+
+
+
+                <!-- =========================== form======================================== -->
                 <form method="POST" action="">
                     {% csrf_token%}
+                    <h4>{{form2.stu_first_name.label}}:</h4>
+                    {{form2.stu_first_name}}
+                    {% for error in form2.stu_first_name.errors %} <p class="txt-red txt-center ltr">{{error}}</p> {% endfor %}
+                    <br><br><br><br>
+                    <h4>{{form2.stu_last_name.label}}:</h4>
+                    {{form2.stu_last_name}}
+                    {% for error in form2.stu_last_name.errors %} <p class="txt-red txt-center ltr">{{error}}</p> {% endfor %}
+                    <br><br><br><br>
+                    <h4>{{form2.stu_father_name.label}}:</h4>
+                    {{form2.stu_father_name}}
+                    {% for error in form2.stu_father_name.errors %} <p class="txt-red txt-center ltr">{{error}}</p> {% endfor %}
+                    <br><br><br><br>
+                    <h4>{{form2.stu_birthday.label}}:</h4>
+                    {{form2.stu_birthday}}
+                    {% for error in form2.stu_birthday.errors %} <p class="txt-red txt-center ltr">{{error}}</p> {% endfor %}
+                    <br><br><br><br>
+                    <h4>{{form2.stu_paye.label}}:</h4>
+                    {{form2.stu_paye}}
+                    {% for error in form2.stu_paye.errors %} <p class="txt-red txt-center ltr">{{error}}</p> {% endfor %}
+                    <br><br><br><br>
+                    <h4>{{form2.stu_last_moadel.label}}:</h4>
+                    {{form2.stu_last_moadel}}
+                    {% for error in form2.stu_last_moadel.errors %} <p class="txt-red txt-center ltr">{{error}}</p> {% endfor %}
+                    <br><br><br><br>
+                    {% for error in form2.user.errors %} <p class="txt-red txt-center ltr">{{error}}</p> {% endfor %}
+                    <br>
+                    
+                    <div class="txt-center">
+                        <button class="btn-submit fs-3" type="button">تمام اطلاعات درست است</button>
+                    </div>
+
+                    <div class="txt-center">
+                        <button class="btn-submit fs-3" type="button">ثبت اطلاعات جدید</button>
+                    </div>
+
+                    <div class="txt-center">
+                        <button href="#" class="btn-delete fs-3" type="button">اطلاعات غلط</button>
+                    </div>
                 </form>
                 
                 

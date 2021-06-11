@@ -1,9 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.http.request import HttpRequest
-from EDU_user.models import User_Auth_State, User_Upload_Files
+from EDU_user.models import User_Auth_State
 from EDU_user.forms import User_Auth_State_Model_Form, User_Upload_Files_Model_Form
 from django.shortcuts import redirect, render
-from django.http.response import Http404, HttpResponse
+from TOOLS.QuerryDict_generator import querryDict_generator
 # Create your views here.
 
 
@@ -15,11 +15,11 @@ def personal_info(request:HttpRequest):
     personal_info_form = User_Auth_State_Model_Form(initial={'user':myUser})
 
     if request.method == 'POST' :
-        pre_model:User_Auth_State = User_Auth_State(user=myUser)
-        personal_info_form = User_Auth_State_Model_Form(request.POST, initial={'user':myUser}, instance=pre_model)
+        QD = querryDict_generator(request_POST=request.POST, user=myUser)
+        personal_info_form = User_Auth_State_Model_Form(QD or None)
 
         if personal_info_form.is_valid():
-            pre_model.save()
+            personal_info_form.save()
             return redirect('upload_page')
 
         else: 
@@ -35,12 +35,13 @@ def personal_info(request:HttpRequest):
 def upload_page(request:HttpRequest):
     myUser = get_user_model().objects.filter(username=request.user.username).first()
     form = User_Upload_Files_Model_Form(initial={'user':myUser})
-    print(form.initial)
+
     if request.method == 'POST':
-        form = User_Upload_Files_Model_Form(data=request.POST, files=request.FILES, initial={'user':myUser})
+        QD = querryDict_generator(request.POST, user=myUser)
+        form = User_Upload_Files_Model_Form(data=QD, files=request.FILES, initial={'user':myUser})
         
         if form.is_valid() : form.save() ; return redirect('verify_page')
-        else : form.add_error('scan_karname', 'لطفا از اول تلاش کنید') ;return redirect('verify_page')
+        else : form.add_error('scan_karname', 'لطفا از اول تلاش کنید')
 
     context = {
         'form' : form
