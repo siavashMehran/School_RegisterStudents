@@ -96,18 +96,17 @@
                     <br>
                     
                     <div class="txt-center">
-                        <button class="btn-submit fs-3" type="button">تمام اطلاعات درست است</button>
+                        <button class="btn-submit fs-3" type="submit">تمام اطلاعات درست است</button>
                     </div>
 
+                    
+                </form>
+                <form  method="POST">
+                    {% csrf_token %}
                     <div class="txt-center">
-                        <button class="btn-submit fs-3" type="button">ثبت اطلاعات جدید</button>
-                    </div>
-
-                    <div class="txt-center">
-                        <button href="#" class="btn-delete fs-3" type="button">اطلاعات غلط</button>
+                        <button class="btn-delete fs-3" type="submit" name="wrongInfo" >اطلاعات غلط</button>
                     </div>
                 </form>
-                
                 
             </div>
 
